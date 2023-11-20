@@ -100,7 +100,7 @@ To get a local copy up and running follow these simple example steps.
   - Run the following commands
 ```
 git clone https://github.com/fatima-najafi/budget-app.git
-cd Budget-App
+cd budget-App
 ```
 
 
