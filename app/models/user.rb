@@ -9,4 +9,3 @@ class User < ApplicationRecord
   validates :name, presence: true,
                    length: { maximum: 30, too_long: '%<count>s charecters is the maximum allowed' }
 end
-# BudgetTracker
