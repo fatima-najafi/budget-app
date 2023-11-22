@@ -14,8 +14,8 @@ Rails.application.routes.draw do
   end
    
 
-  resources :categories do
-    resources :exchanges
-  end
+ resources :categories, only: [:index, :new, :create, :destroy, :show] do
+  resources :exchanges
+end
   get "up" => "rails/health#show", as: :rails_health_check
 end
