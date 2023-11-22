@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_21_045839) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_21_135918) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,6 +21,15 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_21_045839) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["author_id"], name: "index_categories_on_author_id"
+  end
+
+  create_table "exchange_categories", force: :cascade do |t|
+    t.bigint "exchange_id", null: false
+    t.bigint "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_exchange_categories_on_category_id"
+    t.index ["exchange_id"], name: "index_exchange_categories_on_exchange_id"
   end
 
   create_table "exchanges", force: :cascade do |t|
@@ -48,6 +57,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_21_045839) do
   end
 
   add_foreign_key "categories", "users", column: "author_id"
+  add_foreign_key "exchange_categories", "categories"
+  add_foreign_key "exchange_categories", "exchanges"
   add_foreign_key "exchanges", "categories"
   add_foreign_key "exchanges", "users", column: "author_id"
 end
