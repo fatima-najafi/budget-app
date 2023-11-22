@@ -10,4 +10,6 @@ class Category < ApplicationRecord
     exchanges.each do |exchange|
       total+= exchange.amount.to_i
   end
+   total
+end
 end
