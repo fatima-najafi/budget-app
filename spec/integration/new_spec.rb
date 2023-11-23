@@ -7,6 +7,6 @@ RSpec.describe 'categories/new.html.erb', type: :view do
   end
 
   it 'displays the Create Category form' do
-    expect(rendered).to have_selector('h1', text: 'Add new Category')
+    expect(rendered).to have_selector('div', text: 'ADD NEW CATEGORY')
   end
 end
