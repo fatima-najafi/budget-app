@@ -71,14 +71,14 @@
 <!-- LIVE DEMO -->
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link](Comming soon)
+- [Live Demo Link](https://rails-project-j3vc.onrender.com)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- Presentation Video -->
 ## 🎥 Presentation Video <a name="presentation-video"></a>
 
-- [Presentation Video Link](comming soon)
+- [Presentation Video Link](https://www.loom.com/share/7926c02bb88f4fa69fcc963df8fbc36b?sid=bd64e165-9d9e-4d6a-93d5-6ced8cf3f29b)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
