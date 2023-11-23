@@ -6,10 +6,10 @@ class Category < ApplicationRecord
   validates :icon, presence: true
 
   def total_amount
-    total=0
+    total = 0
     exchanges.each do |exchange|
-      total+= exchange.amount.to_i
+      total += exchange.amount.to_i
+    end
+    total
   end
-   total
-end
 end
