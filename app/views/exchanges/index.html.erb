@@ -29,7 +29,13 @@
     <li>
       <p class = ""><%= transaction.name %></p>
       <p class = "">$<%= transaction.amount %></p>
-    </li>  
+    </li> 
+
+    <div class="button-container">
+    <%= button_to "Delete Transaction", category_exchange_path(@category, transaction), method: :delete, class: 'button is-light is-small delete_btn', style: 'box-shadow: 0 2px 4px #36363682; border-radius: 8px;margin-top:10px;' %> 
+ <%= link_to "Update Transaction", edit_category_exchange_path(@category, transaction), class: 'button is-light is-small delete_btn', style: 'box-shadow: 0 2px 4px #36363682; border-radius: 8px;' %>
+    </div> 
+
   <% end %>
 </ul>
 
