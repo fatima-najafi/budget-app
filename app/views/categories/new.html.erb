@@ -1,0 +1,30 @@
+<nav class="navbar" style="background-color: #3778c2;" role="navigation">
+  <div class="navbar-brand">
+    <a href="/" class="navbar-item">
+      <span class="icon is-large has-text-white" style="margin-left: 0;">
+        <i class="fas fa-arrow-left"></i>
+      </span>
+      <div class="ml-10" style="color: white; margin-left: 35px; display: inline-block; vertical-align: middle;">ADD NEW CATEGORY</div> 
+    </a>
+    <div class="navbar-item" style="background-color: #3778c2; margin-left: 0;">
+      <%= form_tag(destroy_user_session_path, method: :delete) do %>
+        <%= submit_tag 'Log Out', class: "button is-primary ml-10", style: "background-color: #3778c2;" %> 
+      <% end %>
+    </div>
+  </div>
+</nav>
+<%= form_with(model: [@category], url: categories_path) do |form| %>
+  <div class = "form-container">
+    <div class="field">
+      <%= form.text_field :name, autofocus: true, autocomplete: "name", placeholder: "Category Name",  class: "input-field", required: true %>
+    </div>
+
+    <div class="field">
+      <%= form.text_field :icon, autofocus: true, autocomplete: "icon", placeholder: "Image Icon URL",  class: "input-field", required: true %>
+    </div>
+    
+    <div class="actions">
+      <%= form.submit 'Create Category', class: "submit-btn" %>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,40 @@
+<nav class="navbar" style="background-color: #3778c2;" role="navigation">
+  <div class="navbar-brand">
+    <a href="/" class="navbar-item">
+      <span class="icon is-large has-text-white" style="margin-left: 0;">
+        <i class="fas fa-arrow-left"></i>
+      </span>
+      <div class="ml-10" style="color: white; margin-left: 55px; display: inline-block; vertical-align: middle;">Login</div> 
+    </a>
+    <div class="navbar-item" style="background-color: #3778c2; margin-left: 40px;">
+      <%= form_tag(destroy_user_session_path, method: :delete) do %>
+        <%= submit_tag 'Log Out', class: "button is-primary ml-10", style: "background-color: #3778c2;" %> 
+      <% end %>
+    </div>
+  </div>
+</nav>
+ 
+<div class="form-control">
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "input-field" %>
+  </div>
+
+  <div class="field">
+    <%= f.password_field :password, autocomplete: "current-password", placeholder: "Current-Password", class: "input-field" %>
+  </div>
+    <div class="actions">
+    <%= f.submit "Log in", class:"submit-btn" %>
+  </div>
+<% end %>
+
+</div>
+<div class="columns is-centered">
+  <div class="column is-half has-text-centered">
+    <div class="is-flex is-flex-direction-column is-align-items-center">
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,34 @@
+<nav class="navbar" style="background-color: #3778c2;" role="navigation">
+  <div class="navbar-brand">
+    <a href="/" class="navbar-item">
+      <div class="ml-10" style="color: white; margin-left: 80px; display: inline-block; vertical-align: middle;">Categoires</div> 
+    </a>
+    <div class="navbar-item" style="background-color: #3778c2; margin-left: 80px;">
+      <%= form_tag(destroy_user_session_path, method: :delete) do %>
+        <%= submit_tag 'Log Out', class: "button is-primary ml-10", style: "background-color: #3778c2;" %> 
+      <% end %>
+    </div>
+  </div>
+</nav>
+
+<ul id="categories" class="categories-ul">
+    <% @categories.each do |category| %>
+        <a href="<%= category_exchanges_path(category) %>">
+            <div class="trans-total-container">
+                <div class="img-container">
+                    <img class="category-image" src="<%= category.icon %>" alt="<%= category.name %>_image">
+                </div>
+                <p class="trans-name"><%= category.name %></p>
+            </div>
+            <p class = "trans-amount">$<%= category.total_amount.inspect %></p>
+        </a>
+         <div class="button-container">
+        <%= button_to "Delete Category", category_path(category), method: :delete, class: 'button is-light is-small delete_btn', style: 'box-shadow: 0 2px 4px #36363682; border-radius: 8px; margin-top:10px;' %>
+        <%= link_to "Update Category", edit_category_path(category), class: 'button is-light is-small delete_btn', style: 'box-shadow: 0 2px 4px #36363682; border-radius: 8px;' %>
+      </div>
+    <% end %>
+</ul>
+
+<a class="add-new-a" href="<%= new_category_path %>">
+    <button class='add-new'>Add a new Category</button>
+</a>

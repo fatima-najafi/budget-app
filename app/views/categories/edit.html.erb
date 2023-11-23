@@ -1,0 +1,38 @@
+<nav class="navbar" style="background-color: #3778c2;" role="navigation">
+  <div class="navbar-brand">
+    <a href="/" class="navbar-item">
+      <span class="icon is-large has-text-white" style="margin-left: 0;">
+        <i class="fas fa-arrow-left"></i>
+      </span>
+      <div class="ml-10" style="color: white; margin-left: 25px; display: inline-block; vertical-align: middle;">Edit Category</div> 
+    </a>
+    <div class="navbar-item" style="background-color: #3778c2; margin-left: 0;">
+      <%= form_tag(destroy_user_session_path, method: :delete) do %>
+        <%= submit_tag 'Log Out', class: "button is-primary ml-10", style: "background-color: #3778c2;" %> 
+      <% end %>
+    </div>
+  </div>
+</nav>
+
+<main class="with_actions for_form">
+  <% flash.each do |name, msg| -%>
+    <%= content_tag :div, msg, class: name %>
+  <% end -%>
+  <%= form_with model: @category, class: "form" do |f| %>
+    <div class="field">
+      <%= f.label :name, "Name" %>
+      <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "category",class: "input-field" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :icon, "Icon" %>
+      <%= f.text_field :icon, autofocus: true, autocomplete: "icon", placeholder: "https://i.pravatar.cc/300?img=40",class: "input-field" %>
+    </div>
+
+    <h1 class="splash_screen">Please provide a valid link that starts with <strong>'https:'</strong> and ends with <strong>'png/gif/jpg'</strong>.</h1>
+
+    <div class="actions">
+      <%= f.submit "Update", data: { turbo: false }, class: "submit-btn" %>
+    </div>
+  <% end %>
+</main>
