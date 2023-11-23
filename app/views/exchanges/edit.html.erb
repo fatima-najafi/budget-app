@@ -1,0 +1,35 @@
+<nav class="navbar" style="background-color: #3778c2;" role="navigation">
+  <div class="navbar-brand">
+    <a href="/" class="navbar-item">
+      <span class="icon is-large has-text-white" style="margin-left: 0;">
+        <i class="fas fa-arrow-left"></i>
+      </span>
+      <div class="ml-10" style="color: white; margin-left: 25px; display: inline-block; vertical-align: middle;">Edit Transaction</div> 
+    </a>
+    <div class="navbar-item" style="background-color: #3778c2; margin-left: 0;">
+      <%= form_tag(destroy_user_session_path, method: :delete) do %>
+        <%= submit_tag 'Log Out', class: "button is-primary ml-10", style: "background-color: #3778c2;" %> 
+      <% end %>
+    </div>
+  </div>
+</nav>
+
+<%= form_with(model: [@category, @transaction], url: category_exchange_path(@category, @transaction), method: :patch) do |form| %>
+  <div class="form-container">
+    <div class="field">
+      <%= form.text_field :name, autofocus: true, autocomplete: "name", placeholder: "Transaction Name", class: "input-field", required: true %>
+    </div>
+
+    <div class="field">
+      <%= form.number_field :amount, autofocus: true, autocomplete: "amount", placeholder: "Transaction Amount", class: "input-field", required: true %>
+    </div>
+
+    <div class="field">
+      <%= form.collection_select(:category_id, Category.where(author: current_user).all, :id, :name, { prompt: "Select a Category" }, { class: "input-field", required: true, data: { validation: "required" }})  %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit 'Update Transaction', class: "submit-btn" %>
+    </div>
+  </div>
+<% end %>
