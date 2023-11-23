@@ -1,5 +1,5 @@
 class ExchangesController < ApplicationController
- def index
+  def index
     @category = Category.find(params[:category_id])
     @transactions = @category.exchanges.where(author: current_user).order(created_at: :desc)
   end
@@ -19,11 +19,10 @@ class ExchangesController < ApplicationController
     end
   end
 
-  
- def edit
-  @category = Category.find(params[:category_id])
-  @transaction = Exchange.find(params[:id])
-end
+  def edit
+    @category = Category.find(params[:category_id])
+    @transaction = Exchange.find(params[:id])
+  end
 
   def update
     @transaction = Exchange.find(params[:id])

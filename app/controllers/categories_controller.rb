@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-   def index
+  def index
     @categories = Category.includes(:exchanges, :author).where(author: current_user)
   end
 
@@ -17,7 +17,7 @@ class CategoriesController < ApplicationController
     end
   end
 
-   def edit
+  def edit
     @category = Category.find(params[:id])
   end
 
@@ -31,12 +31,12 @@ class CategoriesController < ApplicationController
     end
   end
 
-def destroy
-  @category = Category.find(params[:id])
-  @category.exchanges.destroy_all
-  @category.destroy
-  redirect_to categories_path, notice: 'Category was successfully destroyed.'
-end
+  def destroy
+    @category = Category.find(params[:id])
+    @category.exchanges.destroy_all
+    @category.destroy
+    redirect_to categories_path, notice: 'Category was successfully destroyed.'
+  end
 
   private
 
