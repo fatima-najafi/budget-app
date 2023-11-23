@@ -22,6 +22,10 @@
             </div>
             <p class = "trans-amount">$<%= category.total_amount.inspect %></p>
         </a>
+         <div class="button-container">
+        <%= button_to "Delete Category", category_path(category), method: :delete, class: 'button is-light is-small delete_btn', style: 'box-shadow: 0 2px 4px #36363682; border-radius: 8px; margin-top:10px;' %>
+        <%= link_to "Update Category", edit_category_path(category), class: 'button is-light is-small delete_btn', style: 'box-shadow: 0 2px 4px #36363682; border-radius: 8px;' %>
+      </div>
     <% end %>
 </ul>
 
