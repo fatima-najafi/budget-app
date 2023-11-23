@@ -1,41 +1,44 @@
-require 'rails_helper'
-require 'capybara/rspec'
+<nav class="navbar" style="background-color: #3778c2;" role="navigation">
+  <div class="navbar-brand">
+    <a href="/" class="navbar-item">
+      <span class="icon is-large has-text-white" style="margin-left: 10px;">
+        <i class="fas fa-arrow-left"></i>
+      </span>
+      <div class="ml-10" style="color: white; margin-left: 60px; display: inline-block; vertical-align: middle;">Transactions</div> 
+    </a>
+    <div class="navbar-item" style="background-color: #3778c2; margin-left: 20px;">
+      <%= form_tag(destroy_user_session_path, method: :delete) do %>
+        <%= submit_tag 'Log Out', class: "button is-primary ml-10", style: "background-color: #3778c2;" %> 
+      <% end %>
+    </div>
+  </div>
+</nav>
 
-RSpec.describe 'Transactions page', type: :feature do
-  before(:each) do
-    @category = Category.create(name: 'Books', icon: 'book_icon')
-    @transaction1 = @category.exchanges.create(name: 'Transaction 1', amount: 10)
-    @transaction2 = @category.exchanges.create(name: 'Transaction 2', amount: 20)
+<div class = "img-amount-container">
+  <div class="trans-total-container">
+    <div class = "img-container">
+      <img class = "category-image" src= "<%= @category.icon %>" alt="<%= @category.name %>_image">
+    </div>
+    <p class="trans-name"><%= @category.name %></p>
+  </div>
+  <p class= "trans-amount">$<%= @category.total_amount %></p>
+</div>
 
-    visit category_path(@category)
-  end
+<ul id="transactions" class = "categories-ul">
+  <% @transactions.each do |transaction| %>
+    <li>
+      <p class = ""><%= transaction.name %></p>
+      <p class = "">$<%= transaction.amount %></p>
+    </li> 
 
-  it 'displays category information and transactions' do
-    expect(page).to have_css('.img-amount-container')
+    <div class="button-container">
+    <%= button_to "Delete Transaction", category_exchange_path(@category, transaction), method: :delete, class: 'button is-light is-small delete_btn', style: 'box-shadow: 0 2px 4px #36363682; border-radius: 8px;margin-top:10px;' %> 
+ <%= link_to "Update Transaction", edit_category_exchange_path(@category, transaction), class: 'button is-light is-small delete_btn', style: 'box-shadow: 0 2px 4px #36363682; border-radius: 8px;' %>
+    </div> 
 
-    within('.img-amount-container') do
-      expect(page).to have_css('.category-image')
-      expect(page).to have_content(@category.name)
-      expect(page).to have_content("$#{@category.total_amount}")
-    end
+  <% end %>
+</ul>
 
-    expect(page).to have_css('#transactions')
-
-    within('#transactions') do
-      expect(page).to have_css('li', count: 2)
-
-      expect(page).to have_content(@transaction1.name)
-      expect(page).to have_content("$#{@transaction1.amount}")
-
-      expect(page).to have_content(@transaction2.name)
-      expect(page).to have_content("$#{@transaction2.amount}")
-    end
-
-    expect(page).to have_css('.add-new-a')
-
-    within('.add-new-a') do
-      expect(page).to have_button('Add a new Transaction')
-      expect(page).to have_link(href: new_category_exchange_path(@category))
-    end
-  end
-end
+<a class = "add-new-a" href="<%= new_category_exchange_path(@category) %>">
+  <button class='add-new'>Add a new Transaction</button>
+</a>
